@@ -1,6 +1,6 @@
-<h1>Virtual Try-On (ViTO) Project (Advanced) (v2.0)</h1>
+<h1>Virtual Try-On (ViTO) (Advanced) (v2.0)</h1>
 <strong>1. Purpose</strong><br>
-<i>In order to avoid hardcoding the names to be displayed when a certain face with a specific ID is recognized, we can dynamically fetch the customer names from the database based on the predicted ID. </i>
+<i>Face recognition system running entirely on embedded hardware. It captures images, clusters faces, trains a model, and makes predictions.</i>
 <br><br>
 
 <strong>2. Files</strong><br>
@@ -20,12 +20,12 @@ This code captures grayscale images of a person's face using a webcam, saves the
 ------
 
 02_create_clusters.py<br>
-This code seems to be automating the process of organizing images into clusters based on their features extracted from a VGG16 model. It allows you to identify potentially fake faces for manual review and removal, aiding in maintaining a clean dataset.
+This code automates the process of organizing images into clusters based on their features extracted from a VGG16 model. It allows you to identify potentially fake faces for manual review and removal, aiding in maintaining a clean dataset.
 
 ------
 
 03_rearrange_data.py<br>
-This code clears out the 'dataset' directory, then populates it with images from 'dataset-clusters'. After that, it removes 'dataset-clusters'. Finally, it checks the SQLite database for records whose associated images are not in the 'dataset' folder, deletes those records, and prints a message for each deletion. This process ensures data integrity and cleanliness in the dataset.
+This code clears the 'dataset' directory and then populates it with images from 'dataset-clusters'. After that, it removes 'dataset-clusters'. Finally, it checks the SQLite database for records whose associated images are not in the 'dataset' folder, deletes those records, and prints a message for each deletion. This process ensures data integrity and cleanliness in the dataset.
 
 ------
 
@@ -36,12 +36,6 @@ This code trains a LBPH (Local Binary Patterns Histograms) face recognizer using
 
 05_make_predictions.py<br>
 This code utilizes a pre-trained LBPH (Local Binary Patterns Histograms) face recognizer model along with a Haar Cascade classifier for face detection. It captures frames from a webcam feed, converts them to grayscale, and detects faces. For each detected face, it predicts its identity and confidence level using the LBPH model. If the confidence level is above a threshold, it draws a rectangle around the face and displays the predicted ID along with the confidence percentage as a name tag. The process continues until the user presses 'q' to exit the loop, releasing the camera and closing all OpenCV windows.
-
-06_ok_sign.py<br>
-This code detects OK Sign
-
-07_vito.py<br>
-This code detects both face and OK Sign
 
 ++++++++++++++++
 
